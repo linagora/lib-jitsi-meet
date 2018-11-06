@@ -56,15 +56,16 @@
     "webpack": "3.9.1"
   },
   "scripts": {
+    "buildcommit": "npm i && ./node_modules/.bin/webpack -p && git add lib-jitsi-meet.min.js && git commit --amend --no-verify --no-edit",
     "lint": "eslint . && flow",
-    "postinstall": "webpack -p",
     "test": "karma start karma.conf.js",
     "test-watch": "karma start karma.conf.js --no-single-run",
     "validate": "npm ls"
   },
   "pre-commit": [
     "lint",
-    "test"
+    "test",
+    "buildcommit"
   ],
   "main": "./index.js",
   "license": "Apache-2.0"
